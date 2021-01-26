@@ -346,7 +346,7 @@ class WikihopQAModel(LightningModule):
         logs = {'val_loss': avg_loss, 'val_accuracy': accuracy}
         return {'avg_loss': avg_loss, 'log': logs, 'progress_bar': logs}
 
-    def optimizer_step(self, current_epoch, batch_nb, optimizer, optimizer_i, second_order_closure=None):
+    def optimizer_step(self, current_epoch, batch_nb, optimizer, optimizer_i, second_order_closure=None, using_native_amp=None):
         optimizer.step()
         optimizer.zero_grad()
         self._num_grad_updates += 1
